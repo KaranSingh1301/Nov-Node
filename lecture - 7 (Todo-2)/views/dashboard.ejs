@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Simple To-Do App</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    </head>
+    <body>
+      <div class="container">
+        <h1 class="display-4 text-center py-1">To-Do App</h1>
+        
+        <div class="jumbotron p-3 shadow-sm">
+          <form id="create_form" action='/create-item' method="POST">
+            <div class="d-flex align-items-center">
+              <input id="create_field" name='todo' autofocus autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;">
+              <button class="add_item btn btn-primary">Add New Item</button>
+            </div>
+          </form>
+        </div>
+
+        <ul id="item_list" class=""list-group pb-5>
+          <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+            <span class="item-text"> <%= todos[0].todo%></span>
+            <div>
+            <button data-id="<%= todos[0]._id%>" class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
+            <button data-id="<%= todos[0]._id%>" class="delete-me btn btn-danger btn-sm">Delete</button>
+        </div>
+        </li>
+
+        <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+          <span class="item-text"> <%= todos[1].todo%></span>
+          <div>
+          <button data-id="<%= todos[1]._id%>" class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
+          <button data-id="<%= todos[1]._id%>" class="delete-me btn btn-danger btn-sm">Delete</button>
+      </div>
+      </li>
+
+      <li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
+        <span class="item-text"> <%= todos[2].todo%></span>
+        <div>
+        <button data-id="<%= todos[2]._id%>" class="edit-me btn btn-secondary btn-sm mr-1">Edit</button>
+        <button data-id="<%= todos[2]._id%>" class="delete-me btn btn-danger btn-sm">Delete</button>
+    </div>
+    </li>
+        </ul>
+    
+
+      <form action='/logout' method="POST">
+        <button> Logout <button>
+      </form>
+
+      <form action='/logout_from_all_devices' method="POST">
+        <button> Logout from all devices <button>
+      </form>
+
+      </div>
+      <script>
+        var todos = '<%- JSON.stringify(todos) %>'; // test is now a valid js object
+      </script>
+    </body>
+    </html>
