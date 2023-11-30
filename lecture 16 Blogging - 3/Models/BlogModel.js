@@ -58,6 +58,8 @@ let Blog = class {
       }
     });
   }
+
+  //pagination, sort, match
 };
 
 module.exports = Blog;
